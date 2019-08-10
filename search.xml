@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>%2F2019%2F08%2F09%2F%E8%88%AA%E5%8A%A0%E5%AE%B6%E5%B1%85%E6%9C%8D%E5%8A%A1%EF%BC%88201907-201908%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[航加家居服务（201907-201908） 项目：当前订单中的砍价订单模块，需要对所有已确认后的砍价订单，进行查看确定信息并生成确定订单图片。使用html2canvas插件可以通过指定DOM对象，将当前DOM对象生成canvas图片，最后将canvas图片转成base64编码，并赋值给a链接的herf属性，同时给a链接添加download属性可以进行当前指定内容的下载。 问题：在将DOM结构转化为canvas时，出现部分订单顶部留白的现象。 解决思路：根据插件打印的logger进行debug，找到源码中进行配置canvas的并渲染到页面中的的CanvasRenderer()方法，通过打印配置项并多次调试。确定在渲染时canvas标签的scrollY的值有一些误差，导致了这个问题。 解决方案：html2canvas 插件提供配置项进行配置scrollY，将scrollY的值全部指定为0。 代码： 123456789101112 generatorImage() &#123; html2canvas(this.$refs.capture, &#123; scrollY: 0 &#125;).then(canvas =&gt; &#123; let link = document.createElement('a') link.href = canvas.toDataURL() link.setAttribute('download', '确认单.png') link.style.display = 'none' document.body.appendChild(link) link.click() &#125;)&#125; 项目：订单模块，通过查看详情在弹出的第一层模态框中可以查看当前订单的状态以及进行一些修改。点击进行修改状态和相关信息时弹出第二层模态框进行确认修改。当前订单修改后，第一层模态框和订单模块中的状态需要同步为修改后的状态。 问题：由于订单模块、模态框模块都是使用单独的组件完成的，组件解耦严重，导致数据状态同步出现问题。 解决思路：数据驱动视图，如果想要实现页面中视图发生改变，必然要将当前视图绑定的数据进行重新赋值，组件中已经有获取数据并且赋值的方法，需要在状态修改后通过第二层模态框进行子到父传值，告诉第一层模态框进行重新获取数据，第一层模态框再通过子到父传值，实现订单页面的数据重新获取。]]></content>
+    <title><![CDATA[tutu]]></title>
+    <url>%2F2019%2F08%2F10%2Ftutu%2F</url>
+    <content type="text"><![CDATA[今天是在一起整整两个月的纪念日。 利奇马和大姨妈一起来了。]]></content>
+      <tags>
+        <tag>tu</tag>
+      </tags>
   </entry>
 </search>

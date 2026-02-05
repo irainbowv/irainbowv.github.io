@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粤港澳大湾区七日深度游 - 详细行程</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a2a6c;
+            --secondary-color: #b21f1f;
+            --accent-color: #fdbb2d;
+            --success-color: #4caf50;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 10px;
+            max-width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-gradient);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .date-range {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Navigation */
+        .nav-menu {
+            display: flex;
+            overflow-x: auto;
+            background: white;
+            padding: 15px 10px;
+            gap: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav-btn {
+            flex-shrink: 0;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        .nav-btn.active {
+            background: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(26, 42, 108, 0.4);
+        }
+
+        /* Day Section */
+        .day-section {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s;
+        }
+
+        .day-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .day-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .day-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        .meta-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .time-block {
+            position: relative;
+            margin-bottom: 25px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .time-block:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .time-block::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 20px;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        }
+
+        .time-block.completed::before {
+            background: var(--success-color);
+            border-color: var(--success-color);
+        }
+
+        .time-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .time-label {
+            font-weight: 700;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .duration {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+        }
+
+        .activity-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .activity-desc {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        /* Options */
+        .options-section {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+        }
+
+        .options-title {
+            font-size: 0.9em;
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .option-item {
+            background: white;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option-item:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .option-label {
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .option-detail {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        /* Tips */
+        .tip-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe0b2 100%);
+            border-left: 4px solid #ff9800;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+
+        .tip-icon {
+            display: inline-block;
+            margin-right: 5px;
+            font-size: 1.2em;
+        }
+
+        /* Summary Section */
+        .summary-section {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .summary-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .summary-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .summary-card li {
+            padding: 5px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .summary-card li::before {
+            content: "✓ ";
+            color: var(--success-color);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        /* Checklist */
+        .checklist {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .checklist-item:hover {
+            background: #f5f5f5;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--success-color);
+        }
+
+        .checklist-item label {
+            flex: 1;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checklist-item.checked label {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        /* Footer */
+        footer {
+            background: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .subtitle {
+                font-size: 0.9em;
+            }
+
+            .day-section {
+                padding: 15px;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .time-block::before {
+                left: -34px;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: rgba(255, 255, 255, 0.3);
+            height: 6px;
+            border-radius: 3px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: white;
+            width: 0%;
+            transition: width 0.3s;
+            border-radius: 3px;
+        }
+
+        /* Emoji Icons */
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌏 粤港澳大湾区七日深度游</h1>
+            <p class="subtitle">徒步探险 × 美食之旅 × 文化体验</p>
+            <p class="date-range">2026年2月7日 - 2月13日</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </header>
+
+        <nav class="nav-menu">
+            <button class="nav-btn active" onclick="showDay(1)">Day 1 抵达</button>
+            <button class="nav-btn" onclick="showDay(2)">Day 2 徒步</button>
+            <button class="nav-btn" onclick="showDay(3)">Day 3 香港</button>
+            <button class="nav-btn" onclick="showDay(4)">Day 4 澳门</button>
+            <button class="nav-btn" onclick="showDay(5)">Day 5 珠海</button>
+            <button class="nav-btn" onclick="showDay(6)">Day 6 顺德</button>
+            <button class="nav-btn" onclick="showDay(7)">Day 7 广州</button>
+            <button class="nav-btn" onclick="showDay(0)">📋 总览</button>
+        </nav>
+
+        <!-- Day 0: Summary -->
+        <div id="day-0" class="day-section">
+            <div class="summary-section">
+                <h3 class="summary-title">📌 行程总览</h3>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>🗓️ 旅行时间</h4>
+                        <ul>
+                            <li>共7天6晚</li>
+                            <li>2月7日-2月13日</li>
+                            <li>跨越4城</li>
+                        </ul>
+                    </div>
+                    <div class="summary-card">
+                        <h4>🎒 旅行方式</h4>
+                        <ul>
+                            <li>公共交通为主</li>
+                            <li>包含徒步线路</li>
+                            <li>深度文化体验</li>
+                        </ul>
+                    </div>
+                    <div class="summary-card">
+                        <h4>🏨 住宿安排</h4>
+                        <ul>
+                            <li>深圳2晚（福田区）</li>
+                            <li>珠海2晚（拱北）</li>
+                            <li>顺德1晚（大良）</li>
+                            <li>广州1晚（天河）</li>
+                        </ul>
+                    </div>
+                    <div class="summary-card">
+                        <h4>💰 预算参考</h4>
+                        <ul>
+                            <li>住宿: 3000-5000元</li>
+                            <li>餐饮: 1000-2000元</li>
+                            <li>交通: 约1000元</li>
+                            <li>门票: 500-1000元</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-section">
+                <h3 class="summary-title">🎒 行李清单</h3>
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h4>📄 证件类</h4>
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-passport">
+                                <label for="check-passport">港澳通行证+有效签注</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-id">
+                                <label for="check-id">身份证</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-cash">
+                                <label for="check-cash">港币现金1000-1500HKD</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <h4>👕 衣物类</h4>
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-jacket">
+                                <label for="check-jacket">冲锋衣/薄羽绒服</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-clothes">
+                                <label for="check-clothes">速干衣裤2-3套</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-under">
+                                <label for="check-under">内衣袜子若干</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <h4>🥾 徒步装备</h4>
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-shoes">
+                                <label for="check-shoes">徒步鞋/登山鞋</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-pole">
+                                <label for="check-pole">登山杖（可选）</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-water">
+                                <label for="check-water">水袋/水瓶2-3L</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-snack">
+                                <label for="check-snack">能量棒/干粮</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <h4>📱 电子设备</h4>
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-phone">
+                                <label for="check-phone">手机+充电器</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-powerbank">
+                                <label for="check-powerbank">充电宝</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="check-octopus">
+                                <label for="check-octopus">八达通卡</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <span class="tip-icon">💡</span>
+                <strong>重要提醒：</strong>2月深圳-广州天气15-22°C，香港较冷14-20°C，需备外套。提前下载MTR、广州地铁APP，检查港澳通行证签注有效期！
+            </div>
+        </div>
+
+        <!-- Day 1 -->
+        <div id="day-1" class="day-section active">
+            <div class="day-header">
+                <div class="day-title">📅 Day 1 - 2月7日（周五）</div>
+                <div class="day-meta">
+                    <span class="meta-tag">📍 深圳</span>
+                    <span class="meta-tag">🌡️ 15-22°C</span>
+                    <span class="meta-tag">⏱️ 抵达日</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">20:30</span>
+                        <span class="duration">入境 30分钟</span>
+                    </div>
+                    <div class="activity-title">✈️ 抵达深圳宝安国际机场T3</div>
+                    <div class="activity-desc">办理入境手续，取行李，建议开通国际漫游或购买本地流量卡</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">21:00</span>
+                        <span class="duration">交通 1小时</span>
+                    </div>
+                    <div class="activity-title">🚇 前往酒店</div>
+                    <div class="activity-desc">建议住宿：福田口岸/罗湖口岸附近（方便次日过关香港）</div>
+                    <div class="options-section">
+                        <div class="options-title">🚌 交通选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：地铁（推荐）</span>
+                            <span class="option-detail">机场11号线 → 车公庙站换1号线 → 福田站（约50分钟，8元）</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：打车</span>
+                            <span class="option-detail">直达酒店（约40分钟，80-100元）</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：机场巴士</span>
+                            <span class="option-detail">330A线到福田交通枢纽（约1小时，20元）</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">22:00</span>
+                        <span class="duration">入住</span>
+                    </div>
+                    <div class="activity-title">🏨 酒店办理入住</div>
+                    <div class="activity-desc">放下行李，洗漱休息，准备次日徒步装备</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">22:30</span>
+                        <span class="duration">深圳夜宵</span>
+                    </div>
+                    <div class="activity-title">🍜 深圳夜宵体验</div>
+                    <div class="options-section">
+                        <div class="options-title">🍽️ 美食选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：华强北美食街</span>
+                            <span class="option-detail">烧烤、潮汕牛肉火锅、炒粉面（营业至凌晨2点）</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：车公庙茶餐厅</span>
+                            <span class="option-detail">港式夜宵：煲仔饭、炒河粉、奶茶（24小时营业）</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：便利店采购</span>
+                            <span class="option-detail">7-11/便利蜂购买次日徒步干粮、能量棒、水（推荐）</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">23:30</span>
+                    </div>
+                    <div class="activity-title">😴 回酒店休息</div>
+                    <div class="activity-desc">早点休息，次日6:30起床准备徒步</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <span class="tip-icon">💡</span>
+                <strong>今日贴士：</strong>抵达后立即检查港澳通行证，确保签注有效。建议在便利店购买次日徒步所需的水和干粮，香港山上物价较高。
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div id="day-2" class="day-section">
+            <div class="day-header">
+                <div class="day-title">📅 Day 2 - 2月8日（周六）</div>
+                <div class="day-meta">
+                    <span class="meta-tag">📍 深圳→香港→深圳</span>
+                    <span class="meta-tag">🌡️ 14-20°C</span>
+                    <span class="meta-tag">🥾 徒步日</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">06:30</span>
+                        <span class="duration">准备 1小时</span>
+                    </div>
+                    <div class="activity-title">🌅 起床洗漱</div>
+                    <div class="activity-desc">酒店早餐或便利店早餐，检查徒步装备：登山鞋、登山杖、2-3L水、能量棒、防晒霜、帽子</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">07:30-09:00</span>
+                        <span class="duration">过关+交通 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🚶‍♂️ 前往香港徒步起点</div>
+                    <div class="activity-desc">福田/罗湖口岸过关（预留1小时通关时间）</div>
+                    <div class="options-section">
+                        <div class="options-title">🚇 交通路线：</div>
+                        <div class="option-item">
+                            <span class="option-label">龙脊路线（推荐）</span>
+                            <span class="option-detail">罗湖→港铁到筲箕湾站→转9号巴士到石澳→徒步起点</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">麦理浩径路线</span>
+                            <span class="option-detail">罗湖→港铁到钻石山→转96R巴士到北潭涌（周末限定）</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">凤凰径路线</span>
+                            <span class="option-detail">罗湖→港铁到东涌站→转巴士23号到昂坪</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">09:30-14:30</span>
+                        <span class="duration">徒步 4-5小时</span>
+                    </div>
+                    <div class="activity-title">🥾 香港徒步体验</div>
+                    <div class="options-section">
+                        <div class="options-title">🏔️ 徒步路线选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">【推荐】龙脊徒步（港岛径1-2段）</span>
+                            <span class="option-detail">
+                                • 难度：★★★☆☆ 中等<br>
+                                • 距离：8.5公里，4小时<br>
+                                • 亮点：CNN评选"亚洲最佳市区远足径"，俯瞰大浪湾、石澳、赤柱<br>
+                                • 补给：石澳海滩有餐厅、便利店<br>
+                                • 适合：摄影爱好者、海景控
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">麦理浩径第1-2段</span>
+                            <span class="option-detail">
+                                • 难度：★★★★☆ 中高<br>
+                                • 距离：15.5公里，5-6小时<br>
+                                • 亮点：万宜水库、浪茄湾、六角岩柱<br>
+                                • 补给：全程无补给，需自备充足食水<br>
+                                • 适合：体力较好、喜欢挑战者
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">大屿山凤凰径</span>
+                            <span class="option-detail">
+                                • 难度：★★★☆☆ 中等<br>
+                                • 距离：部分路段5-8公里<br>
+                                • 亮点：大佛、心经简林、石壁水库<br>
+                                • 补给：昂坪有餐厅、商店<br>
+                                • 适合：文化+自然结合体验
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">14:30-15:30</span>
+                        <span class="duration">午餐 1小时</span>
+                    </div>
+                    <div class="activity-title">🍽️ 午餐时间</div>
+                    <div class="options-section">
+                        <div class="options-title">🍜 餐厅选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">石澳海滩餐厅（龙脊线）</span>
+                            <span class="option-detail">海鲜餐、茶餐厅，人均100-150HKD</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">西贡海鲜街（麦理浩线）</span>
+                            <span class="option-detail">鲜活海鲜，人均150-250HKD</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">昂坪市集（凤凰线）</span>
+                            <span class="option-detail">素食、港式茶餐厅，人均80-120HKD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">15:30-17:00</span>
+                        <span class="duration">休闲 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🏖️ 休息闲逛</div>
+                    <div class="options-section">
+                        <div class="options-title">📍 周边游览：</div>
+                        <div class="option-item">
+                            <span class="option-label">赤柱市集+美利楼</span>
+                            <span class="option-detail">英式殖民建筑、海滨小镇风情、创意市集</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">西贡码头</span>
+                            <span class="option-detail">渔村风情、出海游船（可选）</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">昂坪大佛</span>
+                            <span class="option-detail">天坛大佛参观、心经简林</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">17:00-18:30</span>
+                        <span class="duration">返回市区</span>
+                    </div>
+                    <div class="activity-title">🚇 返回香港市区</div>
+                    <div class="activity-desc">搭乘巴士+港铁返回尖沙咀/中环</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">18:30-20:00</span>
+                        <span class="duration">晚餐 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🍲 香港晚餐</div>
+                    <div class="options-section">
+                        <div class="options-title">🍽️ 餐厅选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">中环兰桂坊</span>
+                            <span class="option-detail">国际美食、酒吧街，人均200-400HKD</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">铜锣湾</span>
+                            <span class="option-detail">日料、粤菜、茶餐厅，人均150-250HKD</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">尖沙咀海港城</span>
+                            <span class="option-detail">维港夜景+晚餐，人均200-350HKD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">20:00-21:00</span>
+                        <span class="duration">夜景 1小时</span>
+                    </div>
+                    <div class="activity-title">🌃 维港夜景</div>
+                    <div class="activity-desc">
+                        • 尖沙咀星光大道散步<br>
+                        • 天星小轮体验（往返中环-尖沙咀，3.7HKD）<br>
+                        • 维港灯光秀（每晚20:00）
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">21:30-23:00</span>
+                        <span class="duration">过关返回</span>
+                    </div>
+                    <div class="activity-title">🚶‍♂️ 返回深圳</div>
+                    <div class="activity-desc">搭港铁到罗湖/福田口岸，过关回深圳酒店休息</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <span class="tip-icon">🥾</span>
+                <strong>徒步贴士：</strong>龙脊难度适中，麦理浩径较挑战。务必带足2-3L水，香港山上补给少。下载Offline地图，山上信号不稳。穿防滑登山鞋，部分路段陡峭。
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div id="day-3" class="day-section">
+            <div class="day-header">
+                <div class="day-title">📅 Day 3 - 2月9日（周日）</div>
+                <div class="day-meta">
+                    <span class="meta-tag">📍 深圳→香港→珠海</span>
+                    <span class="meta-tag">🌡️ 15-24°C</span>
+                    <span class="meta-tag">🏙️ 城市游</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">08:00</span>
+                        <span class="duration">退房 30分钟</span>
+                    </div>
+                    <div class="activity-title">🏨 深圳酒店退房</div>
+                    <div class="activity-desc">寄存行李（部分酒店提供退房后寄存服务），轻装前往香港</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">08:30-09:30</span>
+                        <span class="duration">过关 1小时</span>
+                    </div>
+                    <div class="activity-title">🚶‍♂️ 过关到香港</div>
+                    <div class="activity-desc">福田/罗湖口岸过关，搭港铁开始香港市区一日游</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">09:30-11:00</span>
+                        <span class="duration">游览 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🏔️ 中环区域游览</div>
+                    <div class="options-section">
+                        <div class="options-title">📍 景点选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：太平山顶（推荐）</span>
+                            <span class="option-detail">
+                                • 搭山顶缆车（单程62HKD，往返88HKD）<br>
+                                • 俯瞰维港全景、凌霄阁摩天台<br>
+                                • 建议上午去，光线好拍照
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：中环半山扶梯+涂鸦墙</span>
+                            <span class="option-detail">
+                                • 全球最长户外扶梯系统（免费）<br>
+                                • 嘉咸街壁画、荷李活道古董街<br>
+                                • 文艺打卡圣地
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：PMQ元创方</span>
+                            <span class="option-detail">
+                                • 创意市集、本地设计师品牌<br>
+                                • 前身是已婚警察宿舍<br>
+                                • 免费参观
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">11:00-12:30</span>
+                        <span class="duration">午餐 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🍜 香港特色午餐</div>
+                    <div class="options-section">
+                        <div class="options-title">🍽️ 餐厅选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">镛记酒家（中环）</span>
+                            <span class="option-detail">米其林推荐烧鹅，人均200-300HKD，需排队</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">添好运点心专门店</span>
+                            <span class="option-detail">米其林一星平价点心，人均80-120HKD，排队1小时+</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">九记牛腩（中环）</span>
+                            <span class="option-detail">网红老店清汤牛腩，人均80-100HKD，需排队</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">兰芳园（中环）</span>
+                            <span class="option-detail">丝袜奶茶发源地，人均60-80HKD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">12:30-15:00</span>
+                        <span class="duration">购物/游玩 2.5小时</span>
+                    </div>
+                    <div class="activity-title">🛍️ 购物游玩</div>
+                    <div class="options-section">
+                        <div class="options-title">📍 区域选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：铜锣湾购物</span>
+                            <span class="option-detail">
+                                • SOGO崇光百货、时代广场<br>
+                                • 莎莎、卓悦（化妆品）<br>
+                                • 金百利商场（药妆、保健品）
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：旺角</span>
+                            <span class="option-detail">
+                                • 女人街（讨价还价）<br>
+                                • 波鞋街（运动品牌）<br>
+                                • 朗豪坊（购物中心）
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：尖沙咀</span>
+                            <span class="option-detail">
+                                • 海港城（大型购物中心）<br>
+                                • 星光大道（维港景观）<br>
+                                • DFS免税店
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">15:00-16:30</span>
+                        <span class="duration">下午茶 1.5小时</span>
+                    </div>
+                    <div class="activity-title">☕ 港式下午茶</div>
+                    <div class="options-section">
+                        <div class="options-title">🍰 下午茶选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">半岛酒店下午茶（尖沙咀）</span>
+                            <span class="option-detail">奢华体验，人均400-600HKD，需提前预订</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">翠华餐厅</span>
+                            <span class="option-detail">港式茶餐厅，人均60-90HKD，菠萝油+奶茶</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">许留山/满记甜品</span>
+                            <span class="option-detail">糖水甜品，人均50-70HKD，芒果班戟、杨枝甘露</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">16:30-18:00</span>
+                        <span class="duration">返回深圳</span>
+                    </div>
+                    <div class="activity-title">🚶‍♂️ 返回深圳取行李</div>
+                    <div class="activity-desc">过关回深圳，从酒店取行李</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">18:00-20:00</span>
+                        <span class="duration">高铁 1小时</span>
+                    </div>
+                    <div class="activity-title">🚄 前往珠海</div>
+                    <div class="activity-desc">
+                        • 深圳北站→珠海站（高铁约1小时，一等座130元）<br>
+                        • 建议提前购票，班次频繁<br>
+                        • 到达珠海站后打车到拱北口岸酒店（约15分钟）
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">20:00-21:00</span>
+                        <span class="duration">入住</span>
+                    </div>
+                    <div class="activity-title">🏨 珠海酒店入住</div>
+                    <div class="activity-desc">建议住宿：拱北口岸/香洲区（方便次日前往澳门）</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">21:00-22:30</span>
+                        <span class="duration">晚餐</span>
+                    </div>
+                    <div class="activity-title">🦞 珠海夜宵</div>
+                    <div class="options-section">
+                        <div class="options-title">🍽️ 美食选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">拱北口岸美食街</span>
+                            <span class="option-detail">粤菜、海鲜、烧烤，人均80-150元</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">湾仔海鲜街</span>
+                            <span class="option-detail">鲜活海鲜，人均150-250元</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">珠海渔女附近夜市</span>
+                            <span class="option-detail">小吃、烧烤、大排档，人均60-100元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <span class="tip-icon">💡</span>
+                <strong>今日贴士：</strong>香港购物可用八达通或支付宝/微信（部分商家）。铜锣湾、旺角人流密集注意财物安全。珠海酒店选拱北口岸附近，步行即可到澳门关口。
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div id="day-4" class="day-section">
+            <div class="day-header">
+                <div class="day-title">📅 Day 4 - 2月10日（周一）</div>
+                <div class="day-meta">
+                    <span class="meta-tag">📍 珠海→澳门→珠海</span>
+                    <span class="meta-tag">🌡️ 15-24°C</span>
+                    <span class="meta-tag">🏛️ 文化游</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">07:30</span>
+                        <span class="duration">早餐</span>
+                    </div>
+                    <div class="activity-title">🥐 酒店早餐</div>
+                    <div class="activity-desc">提前准备，争取9点前到澳门开始游览</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">08:30-10:00</span>
+                        <span class="duration">过关 1-1.5小时</span>
+                    </div>
+                    <div class="activity-title">🚶‍♂️ 拱北口岸过关到澳门</div>
+                    <div class="activity-desc">
+                        • 拱北口岸步行过关（预留1-1.5小时，周一人较少）<br>
+                        • 过关后可搭免费赌场巴士到市区<br>
+                        • 或搭公交3、3A到新马路（议事亭前地）
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">10:00-12:00</span>
+                        <span class="duration">游览 2小时</span>
+                    </div>
+                    <div class="activity-title">🏛️ 澳门半岛北区世界遗产</div>
+                    <div class="activity-desc">
+                        <strong>经典步行路线（徒步串联）：</strong><br><br>
+
+                        <strong>10:00-10:30 大三巴牌坊</strong>（必打卡）<br>
+                        • 圣保禄大教堂遗址，澳门地标<br>
+                        • 清晨光线最佳，人少适合拍照<br><br>
+
+                        <strong>10:30-10:45 恋爱巷</strong><br>
+                        • 粉色小巷，ins网红打卡点<br><br>
+
+                        <strong>10:45-11:30 大炮台+澳门博物馆</strong><br>
+                        • 俯瞰澳门全景<br>
+                        • 博物馆门票15MOP，周二免费<br><br>
+
+                        <strong>11:30-12:00 玫瑰堂</strong><br>
+                        • 巴洛克风格教堂，淡黄色外墙<br>
+                        • 免费参观
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">12:00-13:30</span>
+                        <span class="duration">午餐 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🍽️ 澳门特色午餐</div>
+                    <div class="options-section">
+                        <div class="options-title">🍜 美食选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">大利来记猪扒包（必吃）</span>
+                            <span class="option-detail">
+                                • 位置：氹仔官也街<br>
+                                • 招牌：猪扒包42MOP<br>
+                                • 需排队30分钟+
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">黄枝记粥面馆</span>
+                            <span class="option-detail">
+                                • 位置：议事亭前地附近<br>
+                                • 招牌：虾籽捞面、竹升面<br>
+                                • 人均60-80MOP
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">恒友鱼蛋</span>
+                            <span class="option-detail">
+                                • 街头小吃，咖喱鱼蛋<br>
+                                • 人均30-40MOP
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">葡国餐厅（议事亭前地）</span>
+                            <span class="option-detail">
+                                • 葡国鸡、马介休、非洲鸡<br>
+                                • 人均150-250MOP
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">13:30-15:30</span>
+                        <span class="duration">游览 2小时</span>
+                    </div>
+                    <div class="activity-title">🏛️ 澳门半岛南区</div>
+                    <div class="activity-desc">
+                        <strong>13:30-14:00 议事亭前地</strong>（世界遗产）<br>
+                        • 波浪形黑白地砖广场<br>
+                        • 周边欧式建筑<br><br>
+
+                        <strong>14:00-14:30 民政总署大楼+仁慈堂</strong><br>
+                        • 葡式建筑、蓝白瓷砖<br>
+                        • 免费参观<br><br>
+
+                        <strong>14:30-15:30 岗顶前地</strong><br>
+                        • 岗顶剧院（中国首座西式剧院）<br>
+                        • 圣奥斯定教堂<br>
+                        • 何东图书馆
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">15:30-17:00</span>
+                        <span class="duration">下午茶 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🥧 澳门下午茶</div>
+                    <div class="options-section">
+                        <div class="options-title">🍰 选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">安德鲁饼店（路环）</span>
+                            <span class="option-detail">
+                                • 葡式蛋挞始祖（比玛嘉烈更正宗）<br>
+                                • 需搭巴士到路环市区（25、26A）<br>
+                                • 蛋挞10MOP/个
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">玛嘉烈蛋挞（氹仔）</span>
+                            <span class="option-detail">
+                                • 官也街，排队较短<br>
+                                • 蛋挞10MOP/个
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">澳门银河综合度假城</span>
+                            <span class="option-detail">
+                                • 免费天浪淘园表演<br>
+                                • 商场休息、下午茶
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">威尼斯人大运河购物中心</span>
+                            <span class="option-detail">
+                                • 室内贡多拉（128MOP/船）<br>
+                                • 人造天空<br>
+                                • 商场美食广场
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">17:00-19:00</span>
+                        <span class="duration">游览 2小时</span>
+                    </div>
+                    <div class="activity-title">🎰 路氹城区</div>
+                    <div class="activity-desc">
+                        <strong>17:00-17:45 威尼斯人</strong><br>
+                        • 室内大运河、天空壁画<br>
+                        • 贡多拉船体验（可选）<br><br>
+
+                        <strong>17:45-18:30 巴黎人</strong><br>
+                        • 1/2比例埃菲尔铁塔<br>
+                        • 登塔门票100MOP（可选）<br><br>
+
+                        <strong>18:30-19:00 永利皇宫缆车</strong><br>
+                        • 免费观光缆车<br>
+                        • 音乐喷泉表演（整点）
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">19:00-20:30</span>
+                        <span class="duration">晚餐 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🦀 澳门晚餐</div>
+                    <div class="options-section">
+                        <div class="options-title">🍽️ 餐厅选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">官也街美食（氹仔）</span>
+                            <span class="option-detail">
+                                • 诚昌饭店（水蟹粥）<br>
+                                • 世记咖啡（猪扒包）<br>
+                                • 莫义记（榴莲雪糕）<br>
+                                • 人均100-150MOP
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">新濠天地自助餐</span>
+                            <span class="option-detail">
+                                • 品种丰富<br>
+                                • 人均300-500MOP
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">渔人码头海鲜</span>
+                            <span class="option-detail">
+                                • 海景餐厅<br>
+                                • 人均250-400MOP
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">20:30-21:00</span>
+                        <span class="duration">夜景 30分钟</span>
+                    </div>
+                    <div class="activity-title">🌃 澳门夜景</div>
+                    <div class="activity-desc">
+                        • 澳门观音像夜景（可选）<br>
+                        • 澳门旅游塔夜景（可选）<br>
+                        • 或在路氹城商场继续逛
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">21:00-22:30</span>
+                        <span class="duration">过关返回</span>
+                    </div>
+                    <div class="activity-title">🚶‍♂️ 返回珠海</div>
+                    <div class="activity-desc">
+                        • 搭免费巴士到关闸<br>
+                        • 过关回珠海（预留1小时）<br>
+                        • 珠海酒店休息
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <span class="tip-icon">🏛️</span>
+                <strong>今日贴士：</strong>澳门世界遗产步行即可串联，穿舒适鞋子。赌场有免费巴士往返各景点。妈阁庙是澳门名称来源（Macau）。带好港澳通行证，随时抽查。
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div id="day-5" class="day-section">
+            <div class="day-header">
+                <div class="day-title">📅 Day 5 - 2月11日（周二）</div>
+                <div class="day-meta">
+                    <span class="meta-tag">📍 珠海→顺德</span>
+                    <span class="meta-tag">🌡️ 16-23°C</span>
+                    <span class="meta-tag">🏖️ 海滨+美食</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">08:00-09:00</span>
+                        <span class="duration">早餐</span>
+                    </div>
+                    <div class="activity-title">🥐 酒店早餐</div>
+                    <div class="activity-desc">早餐后退房，寄存行李</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">09:00-11:30</span>
+                        <span class="duration">游览 2.5小时</span>
+                    </div>
+                    <div class="activity-title">🌊 珠海情侣路沿线</div>
+                    <div class="options-section">
+                        <div class="options-title">📍 景点选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：珠海渔女像+情侣路骑行</span>
+                            <span class="option-detail">
+                                • 珠海标志性雕塑（免费）<br>
+                                • 租自行车骑行情侣路（沿海10公里）<br>
+                                • 租车20-30元/小时<br>
+                                • 海风、椰林、沙滩
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：珠海大剧院（日月贝）</span>
+                            <span class="option-detail">
+                                • 外观打卡，海边建筑<br>
+                                • 扎哈·哈迪德设计<br>
+                                • 野狸岛公园散步
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：野狸岛</span>
+                            <span class="option-detail">
+                                • 环岛徒步<br>
+                                • 远观港珠澳大桥<br>
+                                • 海滨栈道
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">11:30-13:00</span>
+                        <span class="duration">午餐 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🦞 珠海海鲜午餐</div>
+                    <div class="options-section">
+                        <div class="options-title">🍽️ 餐厅选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">湾仔海鲜街</span>
+                            <span class="option-detail">
+                                • 鲜活海鲜、现点现做<br>
+                                • 白贝、虾姑、膏蟹<br>
+                                • 人均150-250元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">唐家古镇美食</span>
+                            <span class="option-detail">
+                                • 古村落特色菜<br>
+                                • 文艺环境<br>
+                                • 人均80-120元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">斗门河鲜</span>
+                            <span class="option-detail">
+                                • 重皮蟹、黄沙蚬<br>
+                                • 需打车到斗门（30分钟）<br>
+                                • 人均120-200元
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">13:00-15:00</span>
+                        <span class="duration">游览 2小时</span>
+                    </div>
+                    <div class="activity-title">📍 珠海下午游</div>
+                    <div class="options-section">
+                        <div class="options-title">🎯 景点选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：情侣路继续骑行/散步</span>
+                            <span class="option-detail">
+                                • 沿海悠闲漫步<br>
+                                • 海滨公园、沙滩<br>
+                                • 拍照打卡
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：圆明新园</span>
+                            <span class="option-detail">
+                                • 仿北京圆明园建筑群<br>
+                                • 门票120元<br>
+                                • 游览需2-3小时
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：珠海长隆海洋王国（全天）</span>
+                            <span class="option-detail">
+                                • 需要一整天时间<br>
+                                • 门票350-450元<br>
+                                • 如选此项，需调整其他行程
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项D：唐家古镇</span>
+                            <span class="option-detail">
+                                • 文艺村落、古建筑<br>
+                                • 免费<br>
+                                • 适合拍照、喝咖啡
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">15:00-16:00</span>
+                        <span class="duration">退房+交通</span>
+                    </div>
+                    <div class="activity-title">🚗 珠海酒店退房</div>
+                    <div class="activity-desc">取行李，准备前往顺德</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">16:00-18:30</span>
+                        <span class="duration">交通 2.5小时</span>
+                    </div>
+                    <div class="activity-title">🚗 前往顺德</div>
+                    <div class="options-section">
+                        <div class="options-title">🚌 交通方式：</div>
+                        <div class="option-item">
+                            <span class="option-label">自驾/打车（推荐）</span>
+                            <span class="option-detail">
+                                • 约2.5小时<br>
+                                • 滴滴/包车约300-400元<br>
+                                • 直达顺德大良酒店
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">高铁+打车</span>
+                            <span class="option-detail">
+                                • 珠海站→广州南站（高铁1小时）<br>
+                                • 广州南→顺德大良（打车30分钟）<br>
+                                • 需换乘较麻烦
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">18:30-19:00</span>
+                        <span class="duration">入住</span>
+                    </div>
+                    <div class="activity-title">🏨 顺德酒店入住</div>
+                    <div class="activity-desc">建议住宿：大良/容桂（美食中心）</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">19:00-21:00</span>
+                        <span class="duration">美食之夜 2小时</span>
+                    </div>
+                    <div class="activity-title">🍜 顺德美食盛宴</div>
+                    <div class="activity-desc">
+                        <strong>顺德，中国厨师之乡！粤菜发源地！</strong>
+                    </div>
+                    <div class="options-section">
+                        <div class="options-title">🍽️ 必吃美食：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：大良双皮奶（民信老铺）</span>
+                            <span class="option-detail">
+                                • 顺德标志性甜品<br>
+                                • 民信老铺最正宗<br>
+                                • 双皮奶15-20元/碗
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：顺德鱼生</span>
+                            <span class="option-detail">
+                                • 多条鱼、珍之选餐厅<br>
+                                • 刺身级鲜鱼<br>
+                                • 人均150-250元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：顺德粥底火锅</span>
+                            <span class="option-detail">
+                                • 毋米粥（最有名）<br>
+                                • 粥底涮海鲜、牛肉<br>
+                                • 人均120-180元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项D：陈村粉（黄但记）</span>
+                            <span class="option-detail">
+                                • 薄如蝉翼的河粉<br>
+                                • 炒陈村粉、蒸陈村粉<br>
+                                • 人均50-80元
+                            </span>
+                        </div>
+                    </div>
+                    <div class="activity-desc" style="margin-top:15px;">
+                        <strong>顺德美食地图：</strong><br>
+                        • 大良步行街：小吃、甜品、夜宵<br>
+                        • 华盖路步行街：餐厅、商店<br>
+                        • 建议：先吃正餐，再吃双皮奶甜品
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">21:00-22:30</span>
+                        <span class="duration">夜游</span>
+                    </div>
+                    <div class="activity-title">🌃 顺德夜游</div>
+                    <div class="activity-desc">
+                        • 大良步行街散步<br>
+                        • 华盖路步行街<br>
+                        • 夜宵：宵夜档、糖水铺<br>
+                        • 回酒店休息
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <span class="tip-icon">🍜</span>
+                <strong>今日贴士：</strong>顺德是美食天堂，留足胃口！双皮奶、鱼生、粥底火锅、陈村粉、伦教糕都要尝试。民信老铺需排队，建议避开饭点。
+            </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div id="day-6" class="day-section">
+            <div class="day-header">
+                <div class="day-title">📅 Day 6 - 2月12日（周三）</div>
+                <div class="day-meta">
+                    <span class="meta-tag">📍 顺德→广州</span>
+                    <span class="meta-tag">🌡️ 13-20°C</span>
+                    <span class="meta-tag">🏞️ 园林+水乡</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">08:00-09:30</span>
+                        <span class="duration">早茶 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🥟 顺德早茶（必体验）</div>
+                    <div class="options-section">
+                        <div class="options-title">🍜 早茶餐厅：</div>
+                        <div class="option-item">
+                            <span class="option-label">凤城酒家（米其林推荐）</span>
+                            <span class="option-detail">
+                                • 招牌：大鸽饭、拆鱼羹、煎酿鲮鱼<br>
+                                • 需提前排号<br>
+                                • 人均80-120元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">顺峰山庄</span>
+                            <span class="option-detail">
+                                • 环境优雅、园林式<br>
+                                • 大鸽饭、点心<br>
+                                • 人均100-150元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">红星酒家顺德分店</span>
+                            <span class="option-detail">
+                                • 传统粤式早茶<br>
+                                • 虾饺、烧卖、肠粉<br>
+                                • 人均60-90元
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">09:30-12:00</span>
+                        <span class="duration">游览 2.5小时</span>
+                    </div>
+                    <div class="activity-title">🏛️ 顺德文化游</div>
+                    <div class="options-section">
+                        <div class="options-title">📍 景点选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：顺峰山公园（推荐）</span>
+                            <span class="option-detail">
+                                • 免费，南中国最大牌坊<br>
+                                • 湖景、园林、登山<br>
+                                • 适合晨练、拍照<br>
+                                • 游览时间：2-3小时
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：清晖园（岭南四大名园）</span>
+                            <span class="option-detail">
+                                • 门票：15元<br>
+                                • 岭南园林代表<br>
+                                • 明清私家园林<br>
+                                • 游览时间：1-1.5小时
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：逢简水乡</span>
+                            <span class="option-detail">
+                                • "岭南周庄"<br>
+                                • 古村落、小桥流水<br>
+                                • 免费<br>
+                                • 游览时间：2-3小时
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项D：李小龙乐园</span>
+                            <span class="option-detail">
+                                • 均安镇，李小龙祖居<br>
+                                • 门票：50元<br>
+                                • 功夫文化<br>
+                                • 需打车前往
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">12:00-13:30</span>
+                        <span class="duration">午餐 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🍽️ 顺德特色午餐</div>
+                    <div class="options-section">
+                        <div class="options-title">🍜 美食选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">均安蒸猪（均安镇特色）</span>
+                            <span class="option-detail">
+                                • 顺德三大名菜之一<br>
+                                • 全猪蒸制，皮脆肉嫩<br>
+                                • 人均80-150元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">鱼皮角（杏坛特色）</span>
+                            <span class="option-detail">
+                                • 顺德传统小吃<br>
+                                • 鱼皮包裹馅料<br>
+                                • 人均50-80元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">伦教糕（伦教镇）</span>
+                            <span class="option-detail">
+                                • 顺德传统糕点<br>
+                                • 欢记伦教糕最有名<br>
+                                • 10-15元/份
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">13:30-14:30</span>
+                        <span class="duration">退房+交通</span>
+                    </div>
+                    <div class="activity-title">🚗 退房前往广州</div>
+                    <div class="options-section">
+                        <div class="options-title">🚌 交通方式：</div>
+                        <div class="option-item">
+                            <span class="option-label">自驾/打车（推荐）</span>
+                            <span class="option-detail">约1小时，滴滴100-150元</span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">城际轨道</span>
+                            <span class="option-detail">顺德学院站→广州南站（约30分钟），转地铁到市区</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">14:30-16:00</span>
+                        <span class="duration">交通+入住</span>
+                    </div>
+                    <div class="activity-title">🏨 广州酒店入住</div>
+                    <div class="activity-desc">
+                        建议住宿：天河/珠江新城（靠近地铁，方便次日去机场）<br>
+                        • 天河城商圈：购物方便<br>
+                        • 珠江新城：花城广场、广州塔附近<br>
+                        • 提前确认地铁可直达白云机场
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">16:00-19:00</span>
+                        <span class="duration">游览 3小时</span>
+                    </div>
+                    <div class="activity-title">🏙️ 广州下午游</div>
+                    <div class="options-section">
+                        <div class="options-title">📍 景点选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：广州塔（小蛮腰）</span>
+                            <span class="option-detail">
+                                • 登塔门票：150元起<br>
+                                • 俯瞰珠江全景<br>
+                                • 傍晚上去看日落+夜景最佳<br>
+                                • 游览时间：1.5-2小时
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：花城广场（珠江新城）</span>
+                            <span class="option-detail">
+                                • 广东省博物馆（免费，需预约）<br>
+                                • 广州图书馆<br>
+                                • 海心沙公园<br>
+                                • 游览时间：2-3小时
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：太古汇/天环购物</span>
+                            <span class="option-detail">
+                                • 高端购物中心<br>
+                                • 国际品牌、美食<br>
+                                • 游览时间：2-3小时
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">19:00-20:30</span>
+                        <span class="duration">晚餐 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🦐 广州晚餐</div>
+                    <div class="options-section">
+                        <div class="options-title">🍽️ 餐厅选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">惠食佳（米其林点心）</span>
+                            <span class="option-detail">
+                                • 米其林一星<br>
+                                • 需提前预订<br>
+                                • 人均200-300元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">点都德</span>
+                            <span class="option-detail">
+                                • 网红早茶店（晚上也营业）<br>
+                                • 虾饺、肠粉、流沙包<br>
+                                • 人均80-120元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">陶陶居</span>
+                            <span class="option-detail">
+                                • 百年老字号<br>
+                                • 传统粤菜、点心<br>
+                                • 人均100-150元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">珠江夜游+船上晚餐</span>
+                            <span class="option-detail">
+                                • 游船晚餐套餐<br>
+                                • 欣赏珠江夜景<br>
+                                • 人均200-350元
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">20:30-22:30</span>
+                        <span class="duration">夜景 2小时</span>
+                    </div>
+                    <div class="activity-title">🌃 广州夜景</div>
+                    <div class="options-section">
+                        <div class="options-title">📍 夜游选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：珠江夜游</span>
+                            <span class="option-detail">
+                                • 天字码头出发<br>
+                                • 船票60-150元<br>
+                                • 游览时间：1-1.5小时<br>
+                                • 沿途看猎德大桥、广州塔、海心沙
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：花城广场灯光秀</span>
+                            <span class="option-detail">
+                                • 周末有表演<br>
+                                • 免费观看<br>
+                                • 广州塔灯光秀同步
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：北京路步行街</span>
+                            <span class="option-detail">
+                                • 千年古道遗址+骑楼建筑<br>
+                                • 购物、小吃、夜市<br>
+                                • 免费
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <span class="tip-icon">🏛️</span>
+                <strong>今日贴士：</strong>顺德早茶必吃！凤城酒家、顺峰山庄需排队，建议8点前到。清晖园精致但面积小，1小时够。逢简水乡适合下午悠闲游。广州住天河区最方便。
+            </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div id="day-7" class="day-section">
+            <div class="day-header">
+                <div class="day-title">📅 Day 7 - 2月13日（周四）</div>
+                <div class="day-meta">
+                    <span class="meta-tag">📍 广州→上海</span>
+                    <span class="meta-tag">🌡️ 12-22°C</span>
+                    <span class="meta-tag">✈️ 返程日</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">08:00-09:30</span>
+                        <span class="duration">早茶 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🥟 广州早茶（必体验）</div>
+                    <div class="activity-desc">
+                        <strong>广州早茶文化：一盅两件，叹早茶</strong>
+                    </div>
+                    <div class="options-section">
+                        <div class="options-title">🍜 早茶餐厅：</div>
+                        <div class="option-item">
+                            <span class="option-label">陶陶居（第十甫路总店）</span>
+                            <span class="option-detail">
+                                • 百年老字号，最正宗<br>
+                                • 虾饺、干蒸烧卖、马拉糕<br>
+                                • 人均80-120元<br>
+                                • 需排队1小时+
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">点都德</span>
+                            <span class="option-detail">
+                                • 连锁品牌，品质稳定<br>
+                                • 多家分店，排队较快<br>
+                                • 人均70-100元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">泮溪酒家（荔湾湖公园内）</span>
+                            <span class="option-detail">
+                                • 园林式餐厅，环境优雅<br>
+                                • 传统粤式早茶<br>
+                                • 人均90-130元
+                            </span>
+                        </div>
+                    </div>
+                    <div class="activity-desc" style="margin-top:10px;">
+                        <strong>早茶必点：</strong>虾饺、干蒸烧卖、肠粉、叉烧包、凤爪、流沙包、马拉糕、艇仔粥
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">09:30-12:00</span>
+                        <span class="duration">游览 2.5小时</span>
+                    </div>
+                    <div class="activity-title">🏛️ 广州半日游</div>
+                    <div class="options-section">
+                        <div class="options-title">📍 景点选择（2选1）：</div>
+                        <div class="option-item">
+                            <span class="option-label">选项A：沙面岛（推荐）</span>
+                            <span class="option-detail">
+                                • 欧洲风情建筑群<br>
+                                • 前英法租界，19世纪建筑<br>
+                                • 免费，拍照圣地<br>
+                                • 游览时间：1.5-2小时
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项B：陈家祠</span>
+                            <span class="option-detail">
+                                • 岭南建筑艺术瑰宝<br>
+                                • 门票：10元<br>
+                                • 三雕三塑艺术<br>
+                                • 游览时间：1-1.5小时
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项C：越秀公园+五羊雕塑</span>
+                            <span class="option-detail">
+                                • 广州地标<br>
+                                • 免费<br>
+                                • 越秀山、镇海楼（广州博物馆）<br>
+                                • 游览时间：1.5-2小时
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">选项D：上下九步行街+荔枝湾涌</span>
+                            <span class="option-detail">
+                                • 骑楼建筑+岭南古村<br>
+                                • 免费<br>
+                                • 购物、小吃、游船<br>
+                                • 游览时间：2-3小时
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">12:00-13:30</span>
+                        <span class="duration">午餐 1.5小时</span>
+                    </div>
+                    <div class="activity-title">🍜 广州特色午餐</div>
+                    <div class="options-section">
+                        <div class="options-title">🍽️ 餐厅选择：</div>
+                        <div class="option-item">
+                            <span class="option-label">银记肠粉（宝华路总店）</span>
+                            <span class="option-detail">
+                                • 广州最有名肠粉<br>
+                                • 招牌：鲜虾肠粉、牛肉肠粉<br>
+                                • 人均30-50元<br>
+                                • 需排队
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">南信双皮奶（沙面附近）</span>
+                            <span class="option-detail">
+                                • 百年老店甜品<br>
+                                • 双皮奶、姜撞奶<br>
+                                • 人均20-35元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">广州酒家（文昌总店）</span>
+                            <span class="option-detail">
+                                • 老字号粤菜<br>
+                                • 白切鸡、烧鹅、糖醋排骨<br>
+                                • 人均120-180元
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">13:30-14:30</span>
+                        <span class="duration">退房</span>
+                    </div>
+                    <div class="activity-title">🏨 酒店退房</div>
+                    <div class="activity-desc">取行李，准备前往机场</div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">14:30-15:30</span>
+                        <span class="duration">交通 1小时</span>
+                    </div>
+                    <div class="activity-title">🚇 前往广州白云机场T3</div>
+                    <div class="options-section">
+                        <div class="options-title">🚌 交通方式：</div>
+                        <div class="option-item">
+                            <span class="option-label">地铁3号线（推荐）</span>
+                            <span class="option-detail">
+                                • 体育西路/珠江新城站→机场北/机场南站<br>
+                                • 约40-50分钟<br>
+                                • 票价：7-9元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">机场快线大巴</span>
+                            <span class="option-detail">
+                                • 多个站点出发<br>
+                                • 约1-1.5小时<br>
+                                • 票价：25-30元
+                            </span>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">打车/专车</span>
+                            <span class="option-detail">
+                                • 约1小时<br>
+                                • 费用：120-180元
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">15:30-16:40</span>
+                        <span class="duration">办理值机</span>
+                    </div>
+                    <div class="activity-title">✈️ 机场办理登机</div>
+                    <div class="activity-desc">
+                        • 办理值机、托运行李<br>
+                        • 安检（预留30分钟）<br>
+                        • 提前确认T3航站楼（不是T1/T2）
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">16:40-18:40</span>
+                        <span class="duration">候机</span>
+                    </div>
+                    <div class="activity-title">🛫 候机+购买手信</div>
+                    <div class="activity-desc">
+                        <strong>广式手信推荐：</strong><br>
+                        • 广州酒家：老婆饼、鸡仔饼、杏仁饼<br>
+                        • 陶陶居：月饼、凤梨酥<br>
+                        • 澳门手信：杏仁饼、猪肉干、蛋卷<br>
+                        • 顺德：伦教糕（保质期短）<br>
+                        • 机场免税店：香港化妆品、澳门葡萄酒
+                    </div>
+                </div>
+
+                <div class="time-block">
+                    <div class="time-header">
+                        <span class="time-label">18:40</span>
+                        <span class="duration">起飞</span>
+                    </div>
+                    <div class="activity-title">✈️ 航班起飞返回上海</div>
+                    <div class="activity-desc">
+                        • 飞行时间约2-2.5小时<br>
+                        • 预计21:00-21:30抵达上海<br>
+                        • 行程圆满结束！
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <span class="tip-icon">✈️</span>
+                <strong>今日贴士：</strong>广州早茶必体验！陶陶居最正宗但排队久，建议8点前到。银记肠粉、南信双皮奶都是百年老店。提前3小时到机场，白云机场T3是新航站楼，确认航站楼避免走错。
+            </div>
+
+            <div class="summary-section" style="margin-top: 20px;">
+                <h3 class="summary-title">🎉 行程圆满结束</h3>
+                <div class="activity-desc" style="text-align: center; padding: 20px;">
+                    <strong style="font-size: 1.2em;">7天6晚，跨越深圳-香港-澳门-珠海-顺德-广州</strong><br><br>
+                    ✓ 徒步了香港最美海岸线<br>
+                    ✓ 打卡了澳门世界遗产<br>
+                    ✓ 品尝了顺德美食天堂<br>
+                    ✓ 体验了广州早茶文化<br>
+                    ✓ 感受了大湾区"一小时生活圈"<br><br>
+                    <strong>一次旅程，四城精华，满载而归！🎒</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>粤港澳大湾区七日深度游</strong> | 2026年2月7日-2月13日</p>
+        <p>行程设计：徒步探险 × 文化体验 × 美食之旅</p>
+        <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">
+            💡 使用提示：点击顶部导航快速跳转到每日行程，每个时段都有详细安排和多个可选项<br>
+            📱 建议收藏此页面，旅行中随时查看
+        </p>
+    </footer>
+
+    <script>
+        // Navigation
+        function showDay(dayNum) {
+            // Hide all sections
+            document.querySelectorAll('.day-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(`day-${dayNum}`).classList.add('active');
+
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Update progress
+            updateProgress(dayNum);
+        }
+
+        // Progress bar
+        function updateProgress(dayNum) {
+            const progress = dayNum === 0 ? 0 : (dayNum / 7) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Checklist
+        document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                this.parentElement.classList.toggle('checked', this.checked);
+            });
+        });
+
+        // Mark time blocks as completed on click
+        document.querySelectorAll('.time-block').forEach(block => {
+            block.addEventListener('click', function() {
+                this.classList.toggle('completed');
+            });
+        });
+
+        // Save progress to localStorage
+        window.addEventListener('beforeunload', function() {
+            const checkboxes = {};
+            document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach((cb, index) => {
+                checkboxes[index] = cb.checked;
+            });
+            localStorage.setItem('travelChecklist', JSON.stringify(checkboxes));
+        });
+
+        // Load progress from localStorage
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('travelChecklist');
+            if (saved) {
+                const checkboxes = JSON.parse(saved);
+                document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach((cb, index) => {
+                    if (checkboxes[index]) {
+                        cb.checked = true;
+                        cb.parentElement.classList.add('checked');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
